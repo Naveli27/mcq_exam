@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Test Summary</h1>
+        <h3>Your Score: {{ score }}/{{ questions|length }}</h3>
+        {% for question in questions %}
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ question.question_text }}</h5>
+                    <p>Your Answer: {{ user_answers[question.id] }}</p>
+                    <p>Correct Answer: {{ question.correct_option }}</p>
+                    {% if user_answers[question.id] == question.correct_option %}
+                        <p class="text-success">Correct!</p>
+                    {% else %}
+                        <p class="text-danger">Incorrect!</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %} </div>
+</body>
+</html>
